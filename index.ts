@@ -21,6 +21,7 @@ try {
     if (result){
         const text = removeMd(result.toString());
         start(text);
+        
     }
 } catch (error) {
     console.error("Error:", error);

@@ -4,8 +4,9 @@ import {
   fetchLatestBaileysVersion,
   jidNormalizedUser
 } from 'baileys';
+import { delay } from 'baileys/lib/Utils/index.js';
 
-export default async function start(message : string) {
+export default async function start(message: string) {
   // Use a simple file-based auth state (stores session info)
   const { state, saveCreds } = await useMultiFileAuthState("auth");
 
@@ -47,7 +48,7 @@ export default async function start(message : string) {
   // Listen for credentials update
   sock.ev.on("creds.update", saveCreds);
 
-  async function sendMessage(message : string) {
+  async function sendMessage(messageText: string) {
     if (!isConnected) {
       console.log("Waiting for connection...");
       return;
@@ -55,21 +56,19 @@ export default async function start(message : string) {
 
     try {
       // 👇 Your message details
-      const number = "918000810425"; // <-- Replace with recipient number (in international format)
+      const number = "91lskfakl;j"; // <-- Replace with recipient number (in international format)
       const jid = jidNormalizedUser(number + "@s.whatsapp.net");
 
       // Send a message
       await sock.sendMessage(jid, {
-        text: message
+        text: messageText
       });
 
       console.log("✅ Message sent!");
-      process.exit(0);
+      process.exit(0); // Exit program after message is sent
     } catch (error) {
       console.error("Error sending message:", error);
-      process.exit(1);
+      process.exit(1); // Exit with error code
     }
   }
-}
-
-  
+} 
