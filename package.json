@@ -1,0 +1,19 @@
+{
+  "name": "topicNotifier",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "send topics to revise using ai",
+  "main": "index.ts",
+  "repository": "https://github.com/dheerajk2003/Topic_Notifier.git",
+  "author": "dheerajk2003 <dheerajkhatri2003@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@google/genai": "^1.7.0",
+    "baileys": "^6.7.18",
+    "remove-markdown": "^0.6.2"
+  }
+}
