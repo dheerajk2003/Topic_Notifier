@@ -87,14 +87,19 @@ async function start(message) {
 }
 
 async function GetTopic(topic) {
-    const ai = new GoogleGenAI({});
+    const api = process.env.GEMINI_API_KEY;
+    if (!api) {
+        console.log("api key not found");
+        return undefined;
+    }
+    const ai = new GoogleGenAI({ apiKey: api });
 
     const prompt = "You are a revision bot , whose job is to revise any random subtopic from the given topic with example to a college student , so that he is prepared when placements come , you need to present the data in a way so that its understandable and provides easy understanding to student with brief explainations and examples. for choosing any topic for given topic search any college curriculum or website and revise different subtopic every time. \n The topic for which you need to give revision content is " + topic + "dont give unecessary description like (i am your revision bot ,you are aspiring....) , etc";
 
     const result = await ai.models.generateContent({
         model: "gemini-2.5-flash",
         contents: prompt,
-      });
+    });
     return result.text;
 }
 
